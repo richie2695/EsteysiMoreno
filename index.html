@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feliz Aniversario, Esteysi</title>
+    <style>
+        /* Estilos generales */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', Arial, sans-serif;
+            background: #f7cac9;
+            background: linear-gradient(to bottom, #f7cac9, #92a8d1);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+        h1, p {
+            margin: 0;
+        }
+        .card {
+            position: relative;
+            width: 400px;
+            height: 300px;
+            perspective: 1000px;
+        }
+        .card-inner {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            transform-style: preserve-3d;
+            transform: rotateY(0deg);
+            transition: transform 1s ease-in-out;
+        }
+        .card-front, .card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: #fff;
+            border: 2px solid #ff6f61;
+            border-radius: 10px;
+            backface-visibility: hidden;
+        }
+        .card-front {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2rem;
+            color: #ff6f61;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            background: linear-gradient(145deg, #f7cac9, #ffebd6);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .card-back {
+            transform: rotateY(180deg);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            font-size: 1.2rem;
+            color: #444;
+            line-height: 1.6;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .heart {
+            font-size: 3rem;
+            color: #ff6f61;
+            margin-bottom: 20px;
+        }
+        .button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 1rem;
+            background: #ff6f61;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+            box-shadow: 0 4px 6px rgba(255, 111, 97, 0.4);
+        }
+        .button:hover {
+            background: #ff3b3b;
+            box-shadow: 0 6px 10px rgba(255, 59, 59, 0.5);
+        }
+        #photo {
+            display: none;
+            margin-top: 20px;
+            max-width: 90%;
+            border-radius: 10px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            opacity: 0;
+            transform: scale(0.8);
+            transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+        }
+        #photo.visible {
+            display: block;
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        /* Animación de rotación */
+        .card.open .card-inner {
+            transform: rotateY(180deg);
+        }
+    </style>
+</head>
+<body>
+    <div class="card" onclick="openCard()">
+        <div class="card-inner">
+            <!-- Portada de la carta -->
+            <div class="card-front">
+                ❤️ ¡Haz clic para abrir! ❤️
+            </div>
+            <!-- Interior de la carta -->
+            <div class="card-back">
+                <div class="heart">💌</div>
+                <p>Mi amorrrrrrr,</p>
+                <p>
+                    Hoy celebramos un año lleno de amor, risas y momentos inolvidables. 
+                    No hay palabras para expresar cuánto significas para mí. 
+                    Cada día contigo es un regalo que valoro con todo mi corazoncito.
+                </p>
+                <p>
+                    Gracias por ser mi compañera, mi amiga y mi todo. 
+                    Estoy emocionado por todo lo que nos espera en el futuro. 
+                    ¡Te amo más de lo que las palabras pueden decir! ❤️
+                </p>
+                <button class="button" onclick="showPhoto(event)">¡Presiona aquí bombom! 📸</button>
+                <img id="photo" src="FotoAniversario.jpg" alt="Nuestra foto especial">
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function openCard() {
+            const card = document.querySelector('.card');
+            card.classList.toggle('open');
+        }
+
+        function showPhoto(event) {
+            // Evita que el clic cierre la carta
+            event.stopPropagation();
+
+            const photo = document.getElementById('photo');
+            photo.classList.toggle('visible');
+        }
+    </script>
+</body>
+</html>
